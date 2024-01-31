@@ -37,3 +37,21 @@ for s in range(1,200):
     h=s,'-1'
     if game(h)=="B2":
         print(s,game(h))
+
+
+def Div(n):
+    for i in range(2, int(n**0.5)+1):
+                   if n % i ==0:
+                       return False
+    return True
+mins=1000000
+for x in range(100):
+    for y in range(100):
+        s='0'+'1'*x+'2'*y
+        if len(s)>40:
+            while ('01' in s) or ('02' in s):
+                s=s.replace('02','1110')
+                s=s.replace('01','220')
+            if Div(s.count('1')+s.count('2')*2):
+                    mins=min(mins, x+y*2)
+print(mins)
